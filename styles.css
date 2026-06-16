@@ -524,7 +524,7 @@ body:hover .cursor-glow {
     opacity: 0.6;
 }
 
-.ai-brain {
+.hero-photo-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -533,69 +533,98 @@ body:hover .cursor-glow {
     justify-content: center;
 }
 
-.brain-ring {
-    position: absolute;
-    border: 1px solid;
+.hero-photo-frame {
+    position: relative;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    border: 3px solid rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), 0 0 80px rgba(123, 47, 252, 0.15);
 }
 
-.ring-1 {
-    width: 250px;
-    height: 250px;
-    border-color: rgba(0, 240, 255, 0.2);
-    animation: rotate 20s linear infinite;
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(10%) contrast(1.05);
+    transition: var(--transition-smooth);
 }
 
-.ring-2 {
-    width: 320px;
-    height: 320px;
-    border-color: rgba(123, 47, 252, 0.15);
-    animation: rotate 30s linear infinite reverse;
+.hero-photo-wrapper:hover .hero-photo {
+    filter: grayscale(0%) contrast(1.1) brightness(1.05);
+    transform: scale(1.05);
+}
+
+.photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0, 240, 255, 0.08) 100%);
+    pointer-events: none;
+}
+
+.photo-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ring-outer {
+    width: 340px;
+    height: 340px;
+    border-image: var(--gradient-primary) 1;
     border-style: dashed;
+    opacity: 0.4;
+    animation: rotate 25s linear infinite;
 }
 
-.ring-3 {
-    width: 380px;
-    height: 380px;
-    border-color: rgba(255, 0, 170, 0.1);
-    animation: rotate 40s linear infinite;
-    border-style: dotted;
+.ring-inner {
+    width: 310px;
+    height: 310px;
+    border-color: rgba(123, 47, 252, 0.3);
+    border-style: solid;
+    animation: rotate 20s linear infinite reverse;
 }
 
-.brain-core {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: var(--gradient-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--bg-primary);
-    box-shadow: 0 0 60px rgba(0, 240, 255, 0.4), 0 0 120px rgba(123, 47, 252, 0.2);
-    animation: brainPulse 3s ease-in-out infinite;
-    z-index: 1;
-}
-
-.brain-particles .particle {
+.photo-glow {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(123, 47, 252, 0.08) 50%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    animation: brainPulse 4s ease-in-out infinite;
+}
+
+.photo-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.photo-dots .dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
     background: var(--accent-primary);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-primary);
+    box-shadow: 0 0 12px var(--accent-primary);
 }
 
-.p1 { top: 10%; left: 50%; animation: float 6s ease-in-out infinite; }
-.p2 { top: 25%; right: 10%; animation: float 5s ease-in-out infinite 0.5s; }
-.p3 { top: 50%; right: 5%; animation: float 7s ease-in-out infinite 1s; }
-.p4 { bottom: 25%; right: 15%; animation: float 6s ease-in-out infinite 1.5s; }
-.p5 { bottom: 10%; left: 45%; animation: float 5s ease-in-out infinite 2s; }
-.p6 { bottom: 30%; left: 10%; animation: float 7s ease-in-out infinite 0.8s; }
-.p7 { top: 40%; left: 5%; animation: float 6s ease-in-out infinite 1.2s; }
-.p8 { top: 15%; left: 25%; animation: float 5s ease-in-out infinite 1.8s; }
+.dot-1 { top: 5%; left: 50%; animation: float 5s ease-in-out infinite; }
+.dot-2 { top: 50%; right: 2%; animation: float 6s ease-in-out infinite 1s; }
+.dot-3 { bottom: 5%; left: 50%; animation: float 5s ease-in-out infinite 2s; }
+.dot-4 { top: 50%; left: 2%; animation: float 6s ease-in-out infinite 0.5s; }
 
 /* Scroll Indicator */
 .scroll-indicator {
